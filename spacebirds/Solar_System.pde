@@ -20,7 +20,7 @@ float EarthOrbitRadius = 99/ORfactor;
 float EarthAngle = 0;
 
 float MoonDiam = 0.2*factor;
-float MoonOrbitRadius = (3/ORfactor)+ (EarthDiam/2);
+float MoonOrbitRadius = (5/ORfactor)+ (EarthDiam/2);
 float MoonAngle = 0;
 
 float MarsDiam = .4*factor;
@@ -44,6 +44,7 @@ float NeptuneOrbitRadius = 1000/ORfactor;
 float NeptuneAngle = 0;
 
 void setup() {
+  
   size(1366,768);
   
   frameRate(30);
@@ -98,7 +99,9 @@ void draw() {
   
       popMatrix();
     pushMatrix();
-  
+ // line(0,0,(SaturnDiam/2),0);
+ //   line(0,0,100,100);
+  //stroke(250,6,6);
        rotate(SaturnAngle);
    
   translate(SaturnOrbitRadius,0);
