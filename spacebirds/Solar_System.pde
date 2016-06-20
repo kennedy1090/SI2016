@@ -1,3 +1,4 @@
+ class Solar_System extends GravObj {
 float SunDiam = 58; 
 float factor = 25;
 float ORfactor = 1.5;
@@ -43,17 +44,11 @@ float NeptuneDiam = 3.0*NeptuneFactor;
 float NeptuneOrbitRadius = 1000/ORfactor; 
 float NeptuneAngle = 0;
 
-/*void setup() {
-  
-  size(1366,768);
-  
-  frameRate(30);
-}
+void display() {
 
-void draw() {
-  background(0,0,0);    
-  translate(width/2,height/2);   
-  noStroke();
+  //background(0,0,0);    
+  //translate(width/2,height/2);   
+  //noStroke();
   
   fill(255,200,64);              
   ellipse(0,0,SunDiam,SunDiam);  
@@ -99,9 +94,7 @@ void draw() {
   
       popMatrix();
     pushMatrix();
- // line(0,0,(SaturnDiam/2),0);
- //   line(0,0,100,100);
-  //stroke(250,6,6);
+
        rotate(SaturnAngle);
    
   translate(SaturnOrbitRadius,0);
@@ -155,9 +148,12 @@ void draw() {
   SaturnAngle += 0.0009;
   UranusAngle += 0.0007;
   NeptuneAngle += 0.0005;
-  MoonAngle += 0.02;
-<<<<<<< HEAD
-}*/
-=======
+  MoonAngle += 0.02;;
+  
+    }
 }
->>>>>>> origin/master
+//<<<<<<< HEAD
+//}*/
+//=======
+//}
+//>>>>>>> origin/master
