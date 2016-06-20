@@ -43,7 +43,7 @@ float NeptuneDiam = 3.0*NeptuneFactor;
 float NeptuneOrbitRadius = 1000/ORfactor; 
 float NeptuneAngle = 0;
 
-void setup() {
+/*void setup() {
   
   size(1366,768);
   
@@ -156,4 +156,4 @@ void draw() {
   UranusAngle += 0.0007;
   NeptuneAngle += 0.0005;
   MoonAngle += 0.02;
-}
+}*/

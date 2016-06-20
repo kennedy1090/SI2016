@@ -5,9 +5,13 @@ import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
 import org.jbox2d.dynamics.*;
 
-// An ArrayList of particles that will fall on the surface
+// An ArrayList of objects that will fall on each other
+Cannon c;
 ArrayList<GravObj> gravs;
-
+static ArrayList<Body> kill;
+float cooldown_time = 0.1;
+float cooldown = 0;
+static boolean[] keysDown;
 
 // Particle properties
 float particle_radius = 6.0;
@@ -19,13 +23,16 @@ float grav_constant = 1;
 Box2DProcessing box2d;
 
 void setup() {
-  size(600,400);
+  size(800,600);
   // Initialize box2d physics and create the world
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
   // We are setting a custom gravity
   box2d.setGravity(0, 0);
-
+  keysDown = new boolean[7];
+  
+  c = new Cannon(width/2, height);
+  kill = new ArrayList<Body>();
   // Create the empty list
   gravs = new ArrayList<GravObj>();
   gravs.add(new Planet(100,100,30,new Vec2(6,0), 1,false));
@@ -35,13 +42,69 @@ void setup() {
 void draw() {
   background(255);
   box2d.step();
+  /*
+  while(kill.size()>0){
+    Body b = kill.remove(0);
+    if(!box2d.world.isLocked()&&b!=null){
+      box2d.destroyBody(b);
+    }
+  }*/
   for( GravObj g : gravs){
     if(!g.isImmobile()){
       for(GravObj q : gravs){
         if(q!=g)
-          g.applyGravForce(q.body);
+          g.applyGravForce(q);
       }
     }
     g.display();
   }
+  c.display();
+  if(c.shot&&cooldown<=0){
+    gravs.add(c.getProjectile(30));
+    c.shot=false;
+    cooldown = cooldown_time;
+  }else{
+    cooldown-=1/(frameRate==0?1:frameRate);
+  }
 } // end draw()
+static boolean[] getKeys(){
+  return keysDown;
+}
+public void keyPressed(){
+  if(key == CODED){
+    if (keyCode == LEFT)
+      keysDown[1] = true;
+    else if (keyCode == RIGHT)
+      keysDown[3] = true;
+    else if (keyCode == UP)
+      keysDown[2] = true;
+    else if (keyCode == DOWN)
+      keysDown[4] = true;
+  }
+  else if ( key == ' ')
+    keysDown[0] = true;
+  else if (key == 'r' || key == 'R')
+    keysDown[5] = true;
+  else if (key == 't' || key == 'T')
+    keysDown[6] = true;
+}
+
+public void keyReleased(){
+  if (key == CODED){
+    if (keyCode == LEFT)
+      keysDown[1] = false;
+    else if (keyCode == RIGHT)
+      keysDown[3] = false;
+    else if (keyCode == UP)
+      keysDown[2] = false;
+    else if (keyCode == DOWN)
+      keysDown[4] = false;
+  }
+  else if (key == ' ')
+    keysDown[0] = false;
+  else if (key == 'r' || key == 'R')
+    keysDown[5] = false;
+  else if (key == 't' || key == 'T')
+    keysDown[6] = false;
+
+}

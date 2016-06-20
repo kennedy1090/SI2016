@@ -14,23 +14,6 @@ class Planet extends GravObj{
   }
 
 
-  // This function removes the particle from the box2d world
-  void killBody() {
-    box2d.destroyBody(body);
-  }
-
-  // Is the particle ready for deletion?
-  boolean done() {
-    // Let's find the screen position of the particle
-    Vec2 pos = box2d.getBodyPixelCoord(body);
-    // Is it off the bottom of the screen?
-    if (pos.y > height+r*2) {
-      killBody();
-      return true;
-    }
-    return false;
-  }
-
   // 
   void display() {
     // We look at each body and get its screen position
@@ -44,8 +27,6 @@ class Planet extends GravObj{
     stroke(0);
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);
-    // Let's add a line so we can see the rotation
-    line(0,0,r,0);
     popMatrix();
   }
   // Here's our function that adds the particle to the Box2D world

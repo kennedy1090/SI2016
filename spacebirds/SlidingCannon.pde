@@ -9,7 +9,6 @@ float theta_cannon;
 //sizes for cannon
 float WBase = 60;
 float HBase = 20;
-float ballRadius;
 float HBarrel = 60;
 float WBarrel = 15;
 //coodinates for cannon top's corners
@@ -24,7 +23,6 @@ float BLCornerY;
 */
 
 //array for keys that are pressed
-Boolean[] keysDown;
 
 //variables for shot
 float cannonPower = 50;
@@ -42,46 +40,52 @@ Cannon(float x, float y){
   y_base = y;
   init();
 }
-void init() {
-  size(750,500);
-  keysDown = new Boolean[7];
+Player getProjectile(float v){
+  float x = x_base+HBarrel*cos(PI/2-theta_cannon);
+  float y = y_base-30-HBarrel*sin(PI/2-theta_cannon);
+  Vec2 v2 = new Vec2(v*cos(PI/2-theta_cannon),v*sin(PI/2-theta_cannon));
+  return new Player(x, y, v2);
+}
   
+void init() {
+    
   x_base = 0.5*width;
   y_base = height-10;
-  for (int i = 0; i < keysDown.length; i += 1) {
-    keysDown[i] = false;
+  for (int i = 0; i < spacebirds.getKeys().length; i += 1) {
+    spacebirds.getKeys()[i] = false;
   }
 }
 
-void displayBase() {
-  background(127);
-  if (keysDown[1] == true && x_base > .5 * WBase)
+void display() {
+  pushMatrix();
+  fill(128);
+  if (spacebirds.getKeys()[1] == true && x_base > .5 * WBase)
     x_base -= moveIncrement*dt;
-  if (keysDown[3] == true && x_base < (width - .5 * WBase))
+  if (spacebirds.getKeys()[3] == true && x_base < (width - .5 * WBase))
     x_base += moveIncrement*dt;
-  if (keysDown[2] == true)
+  if (spacebirds.getKeys()[2] == true)
     cannonPower += 1*dt;
-  if (keysDown[4] == true)
+  if (spacebirds.getKeys()[4] == true)
     cannonPower -= 1*dt;
-  if (keysDown[0] == true)
+  if (spacebirds.getKeys()[0] == true)
     shot = true;
-  if (keysDown[5] == true && theta_cannon > - PI * .5)
+  if (spacebirds.getKeys()[5] == true && theta_cannon > - PI * .5)
     theta_cannon -= rotateSpeed*dt;
-  if (keysDown[6] == true && theta_cannon < PI * .5)
+  if (spacebirds.getKeys()[6] == true && theta_cannon < PI * .5)
     theta_cannon += rotateSpeed*dt;
     
-    
+  
   rect(x_base-30,y_base,WBase,HBase);
   rect(x_base-10,y_base-20,20,20);
   
-  /*BLCornerX = x_base - cos(theta_cannon) * WBarrel * .5;
-  BLCornerY = y_base + sin(theta_cannon) * WBarrel * .5;
-  ULCornerX = BLCornerX + sin(theta_cannon) * HBarrel;
-  ULCornerY = BLCornerY + cos(theta_cannon) * HBarrel;
-  BRCornerX = x_base + cos(theta_cannon) * WBarrel * .5;
-  BLCornerY = y_base - sin(theta_cannon) * WBarrel * .5;
-  URCornerX = BRCornerX - sin(theta_cannon) * HBarrel;
-  URCornerY = BRCornerY - cos(theta_cannon) * HBarrel;
+  /*BLCornerX = x_base - cos(PI/2-theta_cannon) * WBarrel * .5;
+  BLCornerY = y_base + sin(PI/2-theta_cannon) * WBarrel * .5;
+  ULCornerX = BLCornerX + sin(PI/2-theta_cannon) * HBarrel;
+  ULCornerY = BLCornerY + cos(PI/2-theta_cannon) * HBarrel;
+  BRCornerX = x_base + cos(PI/2-theta_cannon) * WBarrel * .5;
+  BLCornerY = y_base - sin(PI/2-theta_cannon) * WBarrel * .5;
+  URCornerX = BRCornerX - sin(PI/2-theta_cannon) * HBarrel;
+  URCornerY = BRCornerY - cos(PI/2-theta_cannon) * HBarrel;
   
   beginShape();
   vertex(BLCornerX,BLCornerY);
@@ -97,44 +101,8 @@ void displayBase() {
   popMatrix();
   
   ellipse(x_base,y_base-30,30,30);
+  popMatrix();
 }
 
-public void keyPressed(){
-  if(key == CODED){
-    if (keyCode == LEFT)
-      keysDown[1] = true;
-    else if (keyCode == RIGHT)
-      keysDown[3] = true;
-    else if (keyCode == UP)
-      keysDown[2] = true;
-    else if (keyCode == DOWN)
-      keysDown[4] = true;
-  }
-  else if ( key == ' ')
-    keysDown[0] = true;
-  else if (key == 'r' || key == 'R')
-    keysDown[5] = true;
-  else if (key == 't' || key == 'T')
-    keysDown[6] = true;
-}
 
-public void keyReleased(){
-  if (key == CODED){
-    if (keyCode == LEFT)
-      keysDown[1] = false;
-    else if (keyCode == RIGHT)
-      keysDown[3] = false;
-    else if (keyCode == UP)
-      keysDown[2] = false;
-    else if (keyCode == DOWN)
-      keysDown[4] = false;
-  }
-  else if (key == ' ')
-    keysDown[0] = false;
-  else if (key == 'r' || key == 'R')
-    keysDown[5] = false;
-  else if (key == 't' || key == 'T')
-    keysDown[6] = false;
-
-}
 }
