@@ -1,27 +1,52 @@
-int total =10;
+int total = 10;
 
 ArrayList<Particle> particles = new ArrayList<Particle>();
+
+int count = 0;
+int countMax = 20;
+
+
+void setupMilly() {
+  
+  //p = new Particle(new PVector(width/2,10));
+  for(int i=0; i<total;i++){
+    ++count;
+   particles.add(new Particle(new PVector(width/2,50))); 
+ }
  
+}
+
 void setup() {
   size(640,360);
-  //p = new Particle(new PVector(width/2,10));
-  for(int i=0; i<total;i++)
-   particles.add(new Particle(new PVector(200,200)));
+  setupMilly();
+  
 }
  
-void draw() {
+void drawTarget() {
   background(255);
 //Operating the single Particle
  // p.run();
   //if (p.isDead()) {
     //println("Particle dead!");
-    particles.add(new Particle(new PVector(width/2,50)));
-    for(int j=0;j<particles.size();j++)
+    
+    if(count < countMax){
+      particles.add(new Particle(new PVector(width/2,50)));
+      ++count;
+    }
+    for(int j=particles.size()-1;j>=0;j--)
      {
        Particle p = particles.get(j);
        p.run();
+       if(p.isDead())
+       {
+         particles.remove(j);
+       }
      }
   }
+  
+void draw(){
+  drawTarget();
+}
 
  
 class Particle {
@@ -29,13 +54,17 @@ class Particle {
   PVector velocity;
   PVector acceleration;
   float lifespan;
+  float dist;
+  float choice;
  
   Particle(PVector l) {
 //For demonstration purposes we assign the Particle an initial velocity and constant acceleration.
     acceleration = new PVector(0,0.05);
     velocity = new PVector(random(-1,1),random(-2,0));
     location = l.get();
-    lifespan = 255.0;
+    lifespan = 3000.0;
+    dist = random(3,15);
+    choice = random(1,2);
   }
  
 //Sometimes it’s convenient to have a “run” function that calls all the other functions we need.
@@ -49,11 +78,30 @@ class Particle {
     location.add(velocity);
     lifespan -= 2.0;
   }
+  
+  
  
   void display() {
-    stroke(0,lifespan);
-    fill(0,lifespan);
-    ellipse(location.x,location.y,8,8);
+    pushMatrix();
+    // Range from 0x00 to 0xff (000 to 255)
+    float R = 255;
+    float G = 0;
+    float B = 0;
+    fill(R,G,B);
+    stroke(R,G,B);
+    if(choice == 1)
+    {
+    triangle(location.x,location.y,
+             location.x+dist,location.y,
+             location.x,location.y+dist);
+    }
+             else
+             {
+    triangle(location.x,location.y+dist,
+             location.x,location.y,
+             location.x+dist,location.y);   
+             }
+    popMatrix();
   }
  
 //Is the Particle alive or dead?
