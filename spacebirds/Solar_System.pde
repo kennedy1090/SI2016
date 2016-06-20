@@ -150,10 +150,14 @@ void draw() {
   MercuryAngle += 0.01;
   VenusAngle += 0.008;
   EarthAngle += 0.005;
-  MarsAngle += 0.002;
+  MarsAngle += 0.003;
   JupiterAngle += 0.001;
   SaturnAngle += 0.0009;
   UranusAngle += 0.0007;
   NeptuneAngle += 0.0005;
   MoonAngle += 0.02;
+<<<<<<< HEAD
 }*/
+=======
+}
+>>>>>>> origin/master
