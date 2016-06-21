@@ -1,6 +1,6 @@
  
 class Planet extends GravObj{
-
+  color colour;
   // We need to keep track of a Body and a radius
   float r;
   Planet(float x, float y, float r_, Vec2 v, float d, boolean immobile){
@@ -13,9 +13,10 @@ class Planet extends GravObj{
     this(x,y,r_,new Vec2(0,0),1,immobile);
   }
 
-
+  void changeColor(color c){colour = c;}
   // 
   void display() {
+    super.display();
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
     // Get its angle of rotation

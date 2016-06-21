@@ -1,6 +1,7 @@
 class LevelTwo extends Level {
   int getRecommendedTime(){return 6;}
   Level nextLevel(){
+    println("wew");
     return new LevelMilly();
   }
   ArrayList<GravObj> addGravs(){
@@ -8,9 +9,5 @@ class LevelTwo extends Level {
     g.add(new Planet(width/2, height/2, 100, new Vec2(0,0), 100, false));
     g.add(new Target(width/2, height/6, 10,new Vec2(0,0), true,2));
     return g;
-  }
-  int getReccomendedTime()
-  {
-    return 30;
   }
 }

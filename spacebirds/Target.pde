@@ -23,6 +23,7 @@ class Target extends GravObj{
 
   // 
   void display() {
+    super.display();
     if(immobile)body.setTransform(s, body.getAngle());
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);

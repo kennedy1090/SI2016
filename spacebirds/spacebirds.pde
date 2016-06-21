@@ -117,8 +117,7 @@ public void keyReleased(){
   else if (key == 't' || key == 'T')
     keysDown[6] = false;
   else if(key == 'n' || key == 'N')
-    currentLevel = currentLevel.nextLevel();
-
+    currentLevel.finish(false);
 }
 
 class Contacter implements ContactListener{

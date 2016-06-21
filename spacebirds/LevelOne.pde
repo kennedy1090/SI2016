@@ -10,11 +10,4 @@ class LevelOne extends Level {
     g.add(new Target(width/2,height/3,10,new Vec2(15,0),false));
     return g;
   }
-  void displayExtra(){
-    text("Hello", 100,100);
-  }
-   int getReccomendedTime()
-  {
-    return 60;
-  }
 }

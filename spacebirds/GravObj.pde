@@ -41,5 +41,8 @@ abstract class GravObj{
     //body.setAngularVelocity(random(-10,10));
         body.setAngularVelocity(0.0);
   }
+  void display(){
+    drawArrow(box2d.getBodyPixelCoord(body), box2d.coordWorldToPixels(body.getLinearVelocity()), 5, 5)
+  }
   abstract Shape getShape();
 }

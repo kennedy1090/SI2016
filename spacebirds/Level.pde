@@ -42,8 +42,9 @@ abstract class Level {
     }
   }
   void displayExtra(){}
-  void finish(){
-    scoreboard.addScore(int(getRecommendedTime()*1000-millis()+t)/10);
+  void finish(){finish(true);}
+  void finish(boolean legit){
+    if(legit)scoreboard.addScore(int(getRecommendedTime()*1000-millis()+t)/10);
     kill.addAll(gravs);
     gravs.clear();
     Level tlvl = nextLevel();

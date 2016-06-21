@@ -7,7 +7,11 @@
 //! @param _vy The relative y coordinate for the arrow. 
 //! @param _r The minimum radius of the arrow. 
 //! @param _scale The factor by which to scale the arrow. 
-void drawArrow(float _x, float _y, float _vx, float _vy, float _r, float _scale){
+void drawArrow(Vec2 s, Vec2 v, float _r, float _scale){
+  float _x = s.x;
+  float _y = s.y;
+  float _vx = v.x;
+  float _vy = v.y;
   pushMatrix();
   translate(_x,_y);
   
