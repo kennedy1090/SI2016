@@ -1,4 +1,5 @@
 class LevelOne extends Level {
+  Level restart(){return new LevelOne();}
   int getRecommendedTime(){return 3;}
   Level nextLevel(){
     return new LevelTwo();
