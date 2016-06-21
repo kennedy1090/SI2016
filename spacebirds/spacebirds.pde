@@ -116,6 +116,8 @@ public void keyReleased(){
     keysDown[5] = false;
   else if (key == 't' || key == 'T')
     keysDown[6] = false;
+  else if(key == 'n' || key == 'N')
+    currentLevel = currentLevel.nextLevel();
 
 }
 
