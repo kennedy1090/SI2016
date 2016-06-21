@@ -9,7 +9,7 @@ import org.jbox2d.collision.*;
 
 Cannon c;
 ArrayList<GravObj> gravs;
-static ArrayList<Body> kill;
+static ArrayList<GravObj> kill;
 float cooldown_time = 0.1;
 float cooldown = 0;
 static boolean[] keysDown;
@@ -31,9 +31,9 @@ void setup() {
   // We are setting a custom gravity
   box2d.setGravity(0, 0);
   keysDown = new boolean[7];
-  Contacter con = new Contacter(box2d);
+  new Contacter(box2d);
   c = new Cannon(width/2, height);
-  kill = new ArrayList<Body>();
+  kill = new ArrayList<GravObj>();
   // Create the empty list
   gravs = new ArrayList<GravObj>();
   gravs.add(new Planet(100,100,30,new Vec2(6,0), 1,false));
@@ -44,13 +44,16 @@ void setup() {
 void draw() {
   background(255);
   box2d.step();
-  /*
+  //println("Gravs.size = "+gravs.size());
+  
   while(kill.size()>0){
-    Body b = kill.remove(0);
+    GravObj b = kill.get(0);
+    gravs.remove(b);
     if(!box2d.world.isLocked()&&b!=null){
-      box2d.destroyBody(b);
+      box2d.destroyBody(b.body);
+      kill.remove(0);
     }
-  }*/
+  }
   for( GravObj g : gravs){
     if(!g.isImmobile()){
       for(GravObj q : gravs){
@@ -109,4 +112,30 @@ public void keyReleased(){
   else if (key == 't' || key == 'T')
     keysDown[6] = false;
 
+}
+
+class Contacter implements ContactListener{
+  ArrayList<Target> ts = new ArrayList<Target>();
+  Contacter(Box2DProcessing b){
+    b.world.setContactListener(this);
+  }
+  public void beginContact(Contact c){
+    Object a = c.getFixtureA().getUserData();
+    Object b = c.getFixtureB().getUserData();
+    println(a instanceof Player && b instanceof Target || a instanceof Target && b instanceof Player);
+    if(a instanceof Player && b instanceof Target){
+      ts.add((Target)b);
+    }
+    else if(a instanceof Target && b instanceof Player){
+      ts.add((Target)a);
+    }
+  }
+  public void endContact(Contact c){}
+  public void preSolve(Contact c, Manifold m){}
+  public void postSolve(Contact c, ContactImpulse i){}
+  ArrayList<Target> getDestroyed(){
+    ArrayList<Target> t = (ArrayList<Target>)ts.clone();
+    ts.clear();
+    return t;
+}
 }

@@ -23,7 +23,7 @@ class Player extends GravObj{
     ellipse(0,0,r*2,r*2);
     popMatrix();
     if(millis()-t>5000){
-      spacebirds.kill.add(body);
+      kill.add(this);
     }
   }
   Shape getShape(){
