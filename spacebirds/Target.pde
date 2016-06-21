@@ -35,7 +35,6 @@ class Target extends GravObj{
     }
   }
   Shape getShape(){
-    
     // Make the body's shape a corcl
     CircleShape cs = new CircleShape();
     cs.m_radius = box2d.scalarPixelsToWorld(r);
@@ -51,7 +50,7 @@ int countMax = 20;
 
 void destroy() {
   destroyed = true;
-  kill.add(body);
+  box2d.destroyBody(body);
   for (int i=0; i<total; i++) {
     ++count;
     particles.add(new Particle(body.getPosition()));
@@ -129,5 +128,4 @@ class Particle extends GravObj {
       return false;
     }
   }
-}
 }

@@ -31,6 +31,7 @@ void setup() {
   // We are setting a custom gravity
   box2d.setGravity(0, 0);
   keysDown = new boolean[7];
+  Contacter con = new Contacter(box2d);
   c = new Cannon(width/2, height);
   kill = new ArrayList<Body>();
   // Create the empty list
@@ -108,28 +109,4 @@ public void keyReleased(){
   else if (key == 't' || key == 'T')
     keysDown[6] = false;
 
-}
-class Contacter implements ContactListener{
-  ArrayList<Target> ts = new ArrayList<Target>();
-  Contacter(Box2DProcessing b){
-    b.world.setContactListener(this);
-  }
-  public void beginContact(Contact c){
-    Object a = c.getFixtureA().getUserData();
-    Object b = c.getFixtureB().getUserData();
-    println(a instanceof Player && b instanceof Target || a instanceof Target && b instanceof Player);
-    if(a instanceof Player && b instanceof Target){
-      ts.add((Target)b);
-    }
-    else if(a instanceof Target && b instanceof Player){
-      ts.add((Target)a);
-    }
-  }
-  public void endContact(Contact c){}
-  public void preSolve(Contact c, Manifold m){}
-  public void postSolve(Contact c, ContactImpulse i){}
-  ArrayList<Target> getDestroyed(){
-    ArrayList<Target> t = (ArrayList<Target>)ts.clone();
-    ts.clear();
-    return t;
 }
