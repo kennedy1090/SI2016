@@ -31,11 +31,15 @@ abstract class Level {
         }
       }
       g.display();
+      displayExtra();
     }
     if(!targets){
       finish();
       println("yesy");
     }
+  }
+  void displayExtra(){
+    
   }
   void finish(){
     kill.addAll(gravs);
