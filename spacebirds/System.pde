@@ -1,4 +1,5 @@
  class System extends Level {
+   int getRecommendedTime(){return 0;}
    ArrayList<GravObj> addGravs(){
      return new ArrayList<GravObj>();
    }

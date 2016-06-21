@@ -33,17 +33,17 @@ abstract class Level {
       }
       g.display();
     }
-    text("Time: "+(millis()-t)/1000.0, width*7/8, 50);
+    fill(0);
+    text(String.format("Time: %.3f",(millis()-t)/1000.0), width*7/8, height-20);
     displayExtra();
 
     if(!targets){
       finish();
-      println("yesy");
     }
   }
   void displayExtra(){}
   void finish(){
-    scoreboard.score += int(getRecommendedTime()*1000-millis()+t)/10;
+    scoreboard.addScore(int(getRecommendedTime()*1000-millis()+t)/10);
     kill.addAll(gravs);
     gravs.clear();
     Level tlvl = nextLevel();

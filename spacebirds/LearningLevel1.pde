@@ -11,7 +11,7 @@ class LearningLevel1 extends Level {
   void displayExtra(){
     textSize(24);
     fill(0);
-    text("Use the arrow keys to move left and right", width/2 + 80,height-90, 300, 200);
+    text("Use the arrow keys to move left and right", width/2 + 80,height-180, 300, 200);
   }
   int getRecommendedTime()
   {
