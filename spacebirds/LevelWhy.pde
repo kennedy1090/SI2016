@@ -1,4 +1,5 @@
 class LevelWhy extends Level{
+  Level restart(){return new LevelWhy();}
   Level nextLevel(){
     return null;
   }

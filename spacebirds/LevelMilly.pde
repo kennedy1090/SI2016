@@ -1,5 +1,6 @@
 class LevelMilly extends Level
 {
+  Level restart(){return new LevelMilly();}
   Level nextLevel()
   {
     return new LevelEvan1();
