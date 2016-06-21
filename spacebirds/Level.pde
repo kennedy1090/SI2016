@@ -33,7 +33,8 @@ abstract class Level {
       }
       g.display();
     }
-          displayExtra();
+    text("Time: "+(millis()-t)/1000.0, width*7/8, 50);
+    displayExtra();
 
     if(!targets){
       finish();

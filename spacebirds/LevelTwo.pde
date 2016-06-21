@@ -1,4 +1,5 @@
 class LevelTwo extends Level {
+  int getRecommendedTime(){return 6;}
   Level nextLevel(){
     return new LevelMilly();
   }

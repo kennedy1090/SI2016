@@ -1,4 +1,5 @@
 class LevelOne extends Level {
+  int getRecommendedTime(){return 3;}
   Level nextLevel(){
     return new LevelTwo();
   }
