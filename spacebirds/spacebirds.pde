@@ -20,8 +20,7 @@ int targetsBlue;
 int shots;
 score scoreboard;
 
-ArrayList<Level> levels;
-int currentLevel = 0;
+Level currentLevel;
 
 static boolean[] keysDown;
 
@@ -49,8 +48,7 @@ void setup() {
   c = new Cannon(width/2, height);
   scoreboard = new score();
   // Create the empty list
-  levels = new ArrayList<Level>();
-  levels.add(new LevelOne());
+  currentLevel = new LevelOne();
 }
 
 void draw() {
@@ -63,14 +61,14 @@ void draw() {
     println("Msg = "+e.getMessage());
     println("Cause = "+e.getCause());
   }
-  levels.get(currentLevel).display();
+  currentLevel.display();
   for(Target t : ter.getDestroyed()){
     t.destroy();
   }
   c.display();
   scoreboard.displayScore(targetsRed, targetsBlue, shots);
   if(c.shot&&cooldown<=0){
-    levels.get(currentLevel).add(c.getProjectile(30));
+    currentLevel.add(c.getProjectile(30));
     c.shot=false;
     cooldown = cooldown_time;
     shots++;

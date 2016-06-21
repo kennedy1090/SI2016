@@ -4,9 +4,9 @@ class LevelOne extends Level {
   }
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();
-    g.add(new Planet(width/2,height/2,30,new Vec2(6,0), 1,false));
-    g.add(new Planet(width/2,height*3/4,60,new Vec2(0, 0), 10,false));
-    g.add(new Target(100,200,10,new Vec2(3,0),true));
+    g.add(new Planet(width/2,height/4,30,new Vec2(13,0), 1,false));
+    g.add(new Planet(width/2,height/2,60,new Vec2(0, 0), 20,false));
+    g.add(new Target(width/2,height/3,10,new Vec2(15,0),false));
     return g;
   }
   void displayExtra(){

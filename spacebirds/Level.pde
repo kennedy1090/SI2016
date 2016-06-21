@@ -46,10 +46,6 @@ abstract class Level {
     gravs.clear();
     Level tlvl = nextLevel();
     if(tlvl == null) noLoop();
-    else
-    {
-      levels.add(tlvl);
-    }
-    currentLevel++;
+    else currentLevel = tlvl;
   }
 }
