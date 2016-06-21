@@ -1,6 +1,6 @@
 class LevelTwo extends Level {
   Level nextLevel(){
-    return null;
+    return new LevelMilly();
   }
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();
