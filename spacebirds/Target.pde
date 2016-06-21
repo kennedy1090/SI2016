@@ -2,19 +2,28 @@ class Target extends GravObj{
   
   // We need to keep track of a Body and a radius
   float r;
+  int hits;
+  Target(float x, float y, float r_, Vec2 v, boolean immobile, int hits){
+    this(x,y,r_,v,immobile);
+    this.hits=hits;
+  }
   Target(float x, float y, float r_, Vec2 v,boolean immobile){
     r = r_;
     // This function puts the particle in the Box2d world
+    if(hits==0)hits=1;
     this.immobile = immobile;
     makeBody(x,y,v,0.01);
   }
   Target(float x, float y, float r_, boolean immobile) {
-    this(x,y,r_,new Vec2(0,0),immobile);
+    this(x,y,r_,new Vec2(0,0),immobile, 1);
   }
-
+  int hit(){
+    return --hits;
+  }
 
   // 
   void display() {
+    if(immobile)body.setTransform(s, body.getAngle());
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
     // Get its angle of rotation
@@ -22,7 +31,7 @@ class Target extends GravObj{
     pushMatrix();
     translate(pos.x,pos.y);
     rotate(-a);
-    fill(200,0,0);
+    fill(hits==1?200:0,0,hits==2?200:0);
     stroke(0);
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);

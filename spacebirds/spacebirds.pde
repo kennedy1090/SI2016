@@ -45,11 +45,7 @@ void setup() {
   keysDown = new boolean[7];
   ter = new Contacter(box2d);
   c = new Cannon(width/2, height);
-<<<<<<< HEAD
-=======
   scoreboard = new score();
-  kill = new ArrayList<GravObj>();
->>>>>>> origin/master
   // Create the empty list
   levels = new ArrayList<Level>();
   levels.add(new LevelOne());
@@ -133,10 +129,18 @@ class Contacter implements ContactListener{
     Object b = c.getFixtureB().getUserData();
     println(a instanceof Player && b instanceof Target || a instanceof Target && b instanceof Player);
     if(a instanceof Player && b instanceof Target){
-      ts.add((Target)b);
+      Target t = (Target)b;
+      targetsRed++;
+      if(t.hit()==0){
+        t.destroy();
+      }
     }
     else if(a instanceof Target && b instanceof Player){
-      ts.add((Target)a);
+      Target t = (Target)a;
+      targetsRed++;
+      if(t.hit()==0){
+        t.destroy();
+      }
     }
   }
   public void endContact(Contact c){}

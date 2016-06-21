@@ -1,6 +1,7 @@
 abstract class GravObj{
   Body body;
   boolean immobile;
+  Vec2 s;
   boolean isImmobile(){return immobile;}
   abstract void display();
   void applyGravForce(GravObj g){
@@ -18,6 +19,7 @@ abstract class GravObj{
     BodyDef bd = new BodyDef();
     // Set its position
     bd.position = box2d.coordPixelsToWorld(x,y);
+    s = bd.position;
     bd.type = BodyType.DYNAMIC;
     body = box2d.world.createBody(bd);
 
