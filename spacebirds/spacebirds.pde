@@ -8,10 +8,13 @@ import org.jbox2d.callbacks.*;
 import org.jbox2d.collision.*;
 
 Cannon c;
-ArrayList<GravObj> gravs;
-static ArrayList<GravObj> kill;
-float cooldown_time = 0.1;
+Contacter ter;
+float cooldown_time = 0.4;
 float cooldown = 0;
+
+ArrayList<Level> levels;
+int currentLevel;
+
 static boolean[] keysDown;
 
 // Particle properties
@@ -23,52 +26,44 @@ float grav_constant = 1;
 // For people with C++ experience, box2d is a class
 Box2DProcessing box2d;
 
+World world;
+
 void setup() {
   size(800,600);
   // Initialize box2d physics and create the world
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
+  world = box2d.world;
   // We are setting a custom gravity
   box2d.setGravity(0, 0);
   keysDown = new boolean[7];
-  new Contacter(box2d);
+  ter = new Contacter(box2d);
   c = new Cannon(width/2, height);
   kill = new ArrayList<GravObj>();
   // Create the empty list
-  gravs = new ArrayList<GravObj>();
-  gravs.add(new Planet(100,100,30,new Vec2(6,0), 1,false));
-  gravs.add(new Planet(100,300,60,new Vec2(0, 0), 10,false));
-  gravs.add(new Target(100,200,10,new Vec2(3,0),true));
+  
 }
 
 void draw() {
   background(255);
-  box2d.step();
-  //println("Gravs.size = "+gravs.size());
-  
-  while(kill.size()>0){
-    GravObj b = kill.get(0);
-    gravs.remove(b);
-    if(!box2d.world.isLocked()&&b!=null){
-      box2d.destroyBody(b.body);
-      kill.remove(0);
-    }
+  try{
+    world.step(frameRate > 0 ? 1 / frameRate : 1 / 30,10,8);
   }
-  for( GravObj g : gravs){
-    if(!g.isImmobile()){
-      for(GravObj q : gravs){
-        if(q!=g)
-          g.applyGravForce(q);
-      }
-    }
-    g.display();
+  catch(Throwable e){
+    println("Excpt = "+e);
+    println("Msg = "+e.getMessage());
+    println("Cause = "+e.getCause());
+  }
+  for(Target t : ter.getDestroyed()){
+    t.destroy();
   }
   c.display();
   if(c.shot&&cooldown<=0){
-    gravs.add(c.getProjectile(30));
+    levels.get(currentLevel).add(c.getProjectile(30));
     c.shot=false;
     cooldown = cooldown_time;
   }else{
+    c.shot=false;
     cooldown-=1/(frameRate==0?1:frameRate);
   }
 } // end draw()
@@ -92,6 +87,9 @@ public void keyPressed(){
     keysDown[5] = true;
   else if (key == 't' || key == 'T')
     keysDown[6] = true;
+  else if(key == ']') draw();
+  
+  key = '-';
 }
 
 public void keyReleased(){
@@ -125,9 +123,11 @@ class Contacter implements ContactListener{
     println(a instanceof Player && b instanceof Target || a instanceof Target && b instanceof Player);
     if(a instanceof Player && b instanceof Target){
       ts.add((Target)b);
+      noLoop();
     }
     else if(a instanceof Target && b instanceof Player){
       ts.add((Target)a);
+      noLoop();
     }
   }
   public void endContact(Contact c){}

@@ -2,7 +2,6 @@ class Target extends GravObj{
   
   // We need to keep track of a Body and a radius
   float r;
-  boolean destroyed = false;
   Target(float x, float y, float r_, Vec2 v,boolean immobile){
     r = r_;
     // This function puts the particle in the Box2d world
@@ -16,10 +15,6 @@ class Target extends GravObj{
 
   // 
   void display() {
-    if(destroyed){
-      displayParticles();
-    }
-    else{
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
     // Get its angle of rotation
@@ -32,7 +27,6 @@ class Target extends GravObj{
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);
     popMatrix();
-    }
   }
   Shape getShape(){
     // Make the body's shape a corcl
@@ -41,7 +35,7 @@ class Target extends GravObj{
     return cs;
   }
 
-int total = 10;
+int total = 1;
 
 ArrayList<Particle> particles = new ArrayList<Particle>();
 
@@ -49,16 +43,12 @@ int count = 0;
 int countMax = 20;
 
 void destroy() {
-  destroyed = true;
-  box2d.destroyBody(body);
   for (int i=0; i<total; i++) {
     ++count;
-    particles.add(new Particle(body.getPosition()));
+    gravs.add(new Particle(box2d.coordWorldToPixels(body.getPosition())));
   }
-}
+  kill.add(this);
 
-void displayParticles() {
-  for (Particle p : particles)p.display();
 }
 }
 
@@ -66,21 +56,20 @@ class Particle extends GravObj {
   float lifespan;
   float dist;
   float choice;
-  Body body;
-
   Particle(Vec2 l) {
-    Vec2 velocity = new Vec2(random(-1, 1), random(-2, 0));
+    Vec2 velocity = box2d.coordPixelsToWorld(new Vec2(random(-1, 1), random(-2, 0)));
     lifespan = 3000.0;
-    dist = random(3, 15);
+    dist = box2d.scalarPixelsToWorld(random(3,15));
     choice = random(1, 2);
-    makeBody(l.x, l.y, velocity, 0.001);
+    makeBody(l.x+random(-3000,3000), 
+            l.y+random(-3000,3000), new Vec2(0,0), 0.1);
   }
   Shape getShape(){
-    Vec2 pos = box2d.getBodyPixelCoord(body);
+    Vec2 pos = new Vec2(0,0);
 
     // Make the body's shape a circle
     PolygonShape cs = new PolygonShape();
-    if (choice == 1)
+    if (choice <1.5)
     {
       cs.set(new Vec2[]{pos, 
         new Vec2(pos.x+dist, pos.y), 
@@ -93,12 +82,10 @@ class Particle extends GravObj {
     }
     return cs;
   }
-  Vec2 p2w(Vec2 v){
-    return new Vec2(box2d.coordPixelsToWorld(v));
-  }
 
   void display() {
     Vec2 pos = box2d.getBodyPixelCoord(body);
+    println(body.getPosition());
     pushMatrix();
     // Range from 0x00 to 0xff (000 to 255)
     float R = 255;
@@ -106,17 +93,13 @@ class Particle extends GravObj {
     float B = 0;
     fill(R, G, B);
     stroke(R, G, B);
-    if (choice == 1)
-    {
-      triangle(pos.x, pos.y, 
-        pos.x+dist, pos.y, 
-        pos.x, pos.y+dist);
-    } else
-    {
-      triangle(pos.x, pos.y+dist, 
-        pos.x, pos.y, 
-        pos.x+dist, pos.y);
+    translate(pos.x, pos.y);
+    rotate(body.getAngle());
+    Vec2[] vs = ((PolygonShape)body.getFixtureList().getShape()).getVertices();
+    for(int i = 0; i < 3; i++){
+      vs[i]=box2d.coordWorldToPixels(vs[i]);
     }
+    triangle(vs[0].x, vs[0].y,vs[1].x, vs[1].y,vs[2].x, vs[2].y);
     popMatrix();
   }
 
