@@ -10,6 +10,7 @@ class LearningLevel1 extends Level {
   }
   void displayExtra(){
     textSize(24);
-    text("Use the arrow keys to move left and right", width/2,height-20);
+    fill(0);
+    text("Use the arrow keys to move left and right", width/2 + 80,height-90, 300, 200);
   }
 }
