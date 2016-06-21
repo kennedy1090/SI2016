@@ -2,7 +2,7 @@ class score {
 int shots = 0;
 int score = 0;
 
-float score_x = 20;
+float score_x = 100;
 float score_y = height - 20;
 
   score() {
