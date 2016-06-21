@@ -1,5 +1,4 @@
 class dualOrbit extends Level {
-  Level restart(){return new dualOrbit();}
   Level nextLevel(){
     return new LearningLevel1();
   }

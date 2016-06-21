@@ -1,5 +1,4 @@
 class LearningLevel1 extends Level {
-  Level restart(){return new LearningLevel1();}
   Level nextLevel(){
     return new LevelOne();
   }

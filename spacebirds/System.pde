@@ -1,5 +1,4 @@
 class System extends Level {
-  Level restart(){return new System();}
   int getRecommendedTime() {
     return 0;
   }

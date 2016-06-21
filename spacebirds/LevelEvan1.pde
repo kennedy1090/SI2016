@@ -1,7 +1,6 @@
 class LevelEvan1 extends Level {
-  Level restart(){return new LevelEvan1();}
   Level nextLevel(){
-    return new LevelWhy();
+    return null;
   }
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();
