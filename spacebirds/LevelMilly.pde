@@ -17,6 +17,6 @@ class LevelMilly extends Level
   }
   int getRecommendedTime()
   {
-    return 30;
+    return 40;
   }
 }
