@@ -7,8 +7,6 @@ class Player extends GravObj{
     makeBody(x,y,v,d);
     t = millis();
   }
-
-
   void display() {
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
