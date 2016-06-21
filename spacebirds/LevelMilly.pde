@@ -15,4 +15,8 @@ class LevelMilly extends Level
     objs.add(new Target(600,450,10,new Vec2(0,0),false,1));
     return objs;
   }
+  int getRecommendedTime()
+  {
+    return 30;
+  }
 }
