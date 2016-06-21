@@ -12,6 +12,12 @@ Contacter ter;
 float cooldown_time = 0.4;
 float cooldown = 0;
 
+//stuff for the scoreboard
+int targetsRed;
+int targetsBlue;
+int shots;
+score scoreboard;
+
 ArrayList<Level> levels;
 int currentLevel = 0;
 
@@ -39,6 +45,11 @@ void setup() {
   keysDown = new boolean[7];
   ter = new Contacter(box2d);
   c = new Cannon(width/2, height);
+<<<<<<< HEAD
+=======
+  scoreboard = new score();
+  kill = new ArrayList<GravObj>();
+>>>>>>> origin/master
   // Create the empty list
   levels = new ArrayList<Level>();
   levels.add(new LevelOne());
@@ -59,10 +70,12 @@ void draw() {
     t.destroy();
   }
   c.display();
+  scoreboard.displayScore(targetsRed, targetsBlue, shots);
   if(c.shot&&cooldown<=0){
     levels.get(currentLevel).add(c.getProjectile(30));
     c.shot=false;
     cooldown = cooldown_time;
+    shots++;
   }else{
     c.shot=false;
     cooldown-=1/(frameRate==0?1:frameRate);
