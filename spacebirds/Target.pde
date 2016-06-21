@@ -23,8 +23,10 @@ class Target extends GravObj{
 
   // 
   void display() {
-    super.displayArrow();
-    if(immobile)body.setTransform(s, body.getAngle());
+    if(immobile){
+      body.setLinearVelocity(new Vec2(0,0));
+      body.setTransform(s, body.getAngle());
+    }
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
     // Get its angle of rotation
@@ -39,6 +41,8 @@ class Target extends GravObj{
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);
     popMatrix();
+    stroke(0xff,0x00,0x00);
+    if(!immobile) super.displayArrow();
   }
   Shape getShape(){
     // Make the body's shape a corcl

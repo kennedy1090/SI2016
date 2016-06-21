@@ -11,8 +11,9 @@ void drawArrow(Vec2 s, Vec2 v, float _r, float _scale){
   float _x = s.x;
   float _y = s.y;
   float _vx = v.x;
-  float _vy = v.y;
+  float _vy = -v.y;
   pushMatrix();
+  strokeWeight(2);
   translate(_x,_y);
   
   // Find the inverted angle between the vectors. 

@@ -44,6 +44,7 @@ void init() {
 
 void display() {
   pushMatrix();
+  stroke(0);
   fill(128);
   if (spacebirds.getKeys()[1] == true && x_base > .5 * WBase)
     x_base -= moveIncrement*dt;

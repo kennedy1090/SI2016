@@ -16,7 +16,6 @@ class Planet extends GravObj{
   void changeColor(color c){colour = c;}
   // 
   void display(){
-    super.displayArrow();
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
     // Get its angle of rotation
@@ -29,6 +28,8 @@ class Planet extends GravObj{
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);
     popMatrix();
+    stroke(0xff,0x00,0x00);
+    if(!immobile) super.displayArrow();
   }
   Shape getShape(){
     CircleShape cs = new CircleShape();

@@ -8,7 +8,6 @@ class Player extends GravObj{
     t = millis();
   }
   void display() {
-    super.displayArrow();
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
     // Get its angle of rotation
@@ -24,6 +23,10 @@ class Player extends GravObj{
     if(millis()-t>max_t*1000){
       kill.add(this);
     }
+    pushMatrix();
+    stroke(0xff,0x00,0x00);
+    super.displayArrow();
+    popMatrix();
   }
   Shape getShape(){
     // Make the body's shape a circle
