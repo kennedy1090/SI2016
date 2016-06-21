@@ -22,7 +22,7 @@ class Player extends GravObj{
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);
     popMatrix();
-    if(millis()-t>5000){
+    if(millis()-t>max_t*1000){
       kill.add(this);
     }
   }

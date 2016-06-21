@@ -12,6 +12,8 @@ Contacter ter;
 float cooldown_time = 0.4;
 float cooldown = 0;
 
+float max_t = 15;
+
 //stuff for the scoreboard
 int targetsRed;
 int targetsBlue;
