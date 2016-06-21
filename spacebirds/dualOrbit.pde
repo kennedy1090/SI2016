@@ -14,4 +14,8 @@ class dualOrbit extends Level {
     fill(0);
     //text("Use the arrow keys to move left and right", width/2 + 80,height-90, 300, 200);
   }
+  int getRecommendedTime()
+  {
+    return 60;
+  }
 }
