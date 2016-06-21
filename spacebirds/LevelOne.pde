@@ -13,4 +13,8 @@ class LevelOne extends Level {
   void displayExtra(){
     text("Hello", 100,100);
   }
+   int getReccomendedTime()
+  {
+    return 60;
+  }
 }
