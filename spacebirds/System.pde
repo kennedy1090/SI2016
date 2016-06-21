@@ -1,6 +1,10 @@
  class System extends Level {
+   
    ArrayList<GravObj> addGravs(){
      return new ArrayList<GravObj>();
+   }
+   int getRecommendedTime(){
+    return 0;
    }
    Level nextLevel(){
      return new LearningLevel1();
@@ -133,7 +137,9 @@ textFont(f,16);
 textSize(100);
 textAlign(CENTER);
   fill(255);                         
-  text("SpaceBirds",0,-100);   
+  text("SpaceBirds",0,-125); 
+  textSize(25);
+  text("(Press Spacebar to play)",0,-100);
     pushMatrix();
 
     rotate(MarsAngle);
