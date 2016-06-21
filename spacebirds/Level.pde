@@ -29,8 +29,9 @@ abstract class Level {
         }
       }
       g.display();
-      displayExtra();
     }
+          displayExtra();
+
     if(!targets){
       finish();
       println("yesy");
