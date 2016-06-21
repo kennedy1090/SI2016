@@ -56,6 +56,7 @@ class Particle {
   float lifespan;
   float dist;
   float choice;
+  float theta;
  
   Particle(PVector l) {
 //For demonstration purposes we assign the Particle an initial velocity and constant acceleration.
@@ -64,7 +65,8 @@ class Particle {
     location = l.get();
     lifespan = 3000.0;
     dist = random(3,15);
-    choice = random(1,2);
+    choice = random(0,2);
+    theta = random(0,PI*2);
   }
  
 //Sometimes it’s convenient to have a “run” function that calls all the other functions we need.
@@ -83,24 +85,18 @@ class Particle {
  
   void display() {
     pushMatrix();
+    translate(location.x, location.y);
+    rotate(theta);
     // Range from 0x00 to 0xff (000 to 255)
     float R = 255;
     float G = 0;
     float B = 0;
     fill(R,G,B);
     stroke(R,G,B);
-    if(choice == 1)
-    {
-    triangle(location.x,location.y,
-             location.x+dist,location.y,
-             location.x,location.y+dist);
-    }
-             else
-             {
-    triangle(location.x,location.y+dist,
-             location.x,location.y,
-             location.x+dist,location.y);   
-             }
+    
+    triangle(0,0,
+             dist,0,
+             0,dist);
     popMatrix();
   }
  
