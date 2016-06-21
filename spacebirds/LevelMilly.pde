@@ -2,7 +2,7 @@ class LevelMilly extends Level
 {
   Level nextLevel()
   {
-    return null;
+    return new LevelEvan1();
   }
   ArrayList<GravObj> addGravs()
   {

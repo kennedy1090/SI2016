@@ -3,7 +3,7 @@
      return new ArrayList<GravObj>();
    }
    Level nextLevel(){
-     return new LevelOne();
+     return new LearningLevel1();
    }
    void finish(){
      if(keysDown[0]){
