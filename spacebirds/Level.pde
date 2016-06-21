@@ -1,9 +1,12 @@
 static ArrayList<GravObj> kill = new ArrayList<GravObj>();
 abstract class Level {
   ArrayList<GravObj> gravs;
+  int t;
   Level(){
     gravs = addGravs();
+    t = millis();
   }
+  abstract int getRecommendedTime();
   abstract Level nextLevel();
   abstract ArrayList<GravObj> addGravs();
   void add(GravObj g){
@@ -39,6 +42,7 @@ abstract class Level {
   }
   void displayExtra(){}
   void finish(){
+    scoreboard.score += int(getRecommendedTime()*1000-millis()+t)/10;
     kill.addAll(gravs);
     gravs.clear();
     Level tlvl = nextLevel();
