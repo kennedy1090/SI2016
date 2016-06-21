@@ -1,18 +1,20 @@
- class System extends Level {
-   int getRecommendedTime(){return 0;}
-   ArrayList<GravObj> addGravs(){
-     return new ArrayList<GravObj>();
-   }
-   Level nextLevel(){
-     return new LearningLevel1();
-   }
-   void finish(){
-     if(keysDown[0]){
-       currentLevel = nextLevel();
-     }
-   }
+class System extends Level {
+  int getRecommendedTime() {
+    return 0;
+  }
+  ArrayList<GravObj> addGravs() {
+    return new ArrayList<GravObj>();
+  }
+  Level nextLevel() {
+    return new LearningLevel1();
+  }
+  void finish() {
+    if (keysDown[2]) {
+      currentLevel = nextLevel();
+    }
+  }
   System() {
-     f = createFont("Arial",16,true);
+    f = createFont("Arial", 16, true);
     SunDiam = 58; 
     factor = 25;
     ORfactor = 1.5;
@@ -103,8 +105,8 @@
   float NeptuneOrbitRadius;
   float NeptuneAngle;
   PFont f;
- void displayExtra(){
-     background(0, 0, 0);  
+  void displayExtra() {
+    background(0, 0, 0);  
     translate(width/2, height/2);   
     noStroke();
 
@@ -130,12 +132,16 @@
     ellipse(0, 0, VenusDiam, VenusDiam);
 
     popMatrix();
-textFont(f,16);
-textSize(100);
-textAlign(CENTER);
-  fill(255);                         
-  text("SpaceBirds",0,-100);   
+    textFont(f, 16);
+    textSize(100);
+    textAlign(CENTER);
+    fill(255);                         
+    text("SpaceBirds", 0, -125);   
+        fill(255);                  
+        textSize(25);
+    text("(Press UP arrow to play)", 0, -100);
     pushMatrix();
+    
 
     rotate(MarsAngle);
 
@@ -211,6 +217,5 @@ textAlign(CENTER);
     UranusAngle += 0.0007;
     NeptuneAngle += 0.0005;
     MoonAngle += 0.02;
-
-  } 
+  }
 }
