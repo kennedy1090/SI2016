@@ -27,7 +27,7 @@ static boolean[] keysDown;
 // Particle properties
 float particle_radius = 6.0;
 float coeff_friction = 0.05;
-float coeff_restitution = 1; // =1 for elastic collisions
+float coeff_restitution = .9; // =1 for elastic collisions
                                // =0 for (almost) perfeclty inelastic collisions 
 float grav_constant = 1;
 // For people with C++ experience, box2d is a class

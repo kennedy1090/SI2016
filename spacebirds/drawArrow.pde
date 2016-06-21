@@ -7,19 +7,20 @@
 //! @param _vy The relative y coordinate for the arrow. 
 //! @param _r The minimum radius of the arrow. 
 //! @param _scale The factor by which to scale the arrow. 
-void drawArrow(Vec2 s, Vec2 v, float _r, float _scale){
+void drawArrow(Vec2 s, Vec2 v, float _r, float _scale, color _color){
   float _x = s.x;
   float _y = s.y;
   float _vx = v.x;
   float _vy = -v.y;
   pushMatrix();
+  stroke(_color);
   strokeWeight(2);
   translate(_x,_y);
   
   // Find the inverted angle between the vectors. 
   float _Tangle = atan2(_vy,_vx);
   
-  float _Tmag = sqrt(_vx*_vx + _vy*_vy);
+  float _Tmag = log(sqrt(_vx*_vx + _vy*_vy)/10)*10;
   if(_Tmag > 0){
     pushMatrix();
     

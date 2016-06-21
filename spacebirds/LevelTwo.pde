@@ -1,8 +1,7 @@
 class LevelTwo extends Level {
   int getRecommendedTime(){return 6;}
   Level nextLevel(){
-    println("wew");
-    return new LevelMilly();
+    return new LevelWhy();
   }
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();
