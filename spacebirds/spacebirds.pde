@@ -48,7 +48,7 @@ void setup() {
   c = new Cannon(width/2, height);
   scoreboard = new score();
   // Create the empty list
-  currentLevel = new LearningLevel1();
+  currentLevel = new System();
 }
 
 void draw() {
@@ -116,6 +116,8 @@ public void keyReleased(){
     keysDown[5] = false;
   else if (key == 't' || key == 'T')
     keysDown[6] = false;
+  else if(key == 'n' || key == 'N')
+    currentLevel = currentLevel.nextLevel();
 
 }
 
@@ -127,7 +129,6 @@ class Contacter implements ContactListener{
   public void beginContact(Contact c){
     Object a = c.getFixtureA().getUserData();
     Object b = c.getFixtureB().getUserData();
-    println(a instanceof Player && b instanceof Target || a instanceof Target && b instanceof Player);
     if(a instanceof Player && b instanceof Target){
       Target t = (Target)b;
       targetsRed++;
