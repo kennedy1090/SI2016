@@ -38,9 +38,7 @@ abstract class Level {
       println("yesy");
     }
   }
-  void displayExtra(){
-    
-  }
+  void displayExtra(){}
   void finish(){
     kill.addAll(gravs);
     gravs.clear();

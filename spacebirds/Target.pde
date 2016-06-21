@@ -31,7 +31,9 @@ class Target extends GravObj{
     pushMatrix();
     translate(pos.x,pos.y);
     rotate(-a);
-    fill(hits==1?200:0,0,hits==2?200:0);
+    colorMode(HSB);
+    fill((hits-1)*256/5, 1, 1);
+    colorMode(RGB);
     stroke(0);
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);
