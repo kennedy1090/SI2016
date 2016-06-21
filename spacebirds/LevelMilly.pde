@@ -19,4 +19,9 @@ class LevelMilly extends Level
   {
     return 40;
   }
+  void displayExtra()
+  {
+  fill(255,0,0);
+  text("#CLE",199,210);
+  }
 }
