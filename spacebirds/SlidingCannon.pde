@@ -11,20 +11,6 @@ float WBase = 60;
 float HBase = 20;
 float HBarrel = 60;
 float WBarrel = 15;
-//coodinates for cannon top's corners
-/*float URCornerX;
-float URCornerY;
-float ULCornerX;
-float ULCornerY;
-float BRCornerX;
-float BRCornerY;
-float BLCornerX;
-float BLCornerY;
-*/
-
-//array for keys that are pressed
-
-//variables for shot
 float cannonPower = 50;
 boolean shot = false;
 
@@ -77,22 +63,6 @@ void display() {
   
   rect(x_base-30,y_base,WBase,HBase);
   rect(x_base-10,y_base-20,20,20);
-  
-  /*BLCornerX = x_base - cos(PI/2-theta_cannon) * WBarrel * .5;
-  BLCornerY = y_base + sin(PI/2-theta_cannon) * WBarrel * .5;
-  ULCornerX = BLCornerX + sin(PI/2-theta_cannon) * HBarrel;
-  ULCornerY = BLCornerY + cos(PI/2-theta_cannon) * HBarrel;
-  BRCornerX = x_base + cos(PI/2-theta_cannon) * WBarrel * .5;
-  BLCornerY = y_base - sin(PI/2-theta_cannon) * WBarrel * .5;
-  URCornerX = BRCornerX - sin(PI/2-theta_cannon) * HBarrel;
-  URCornerY = BRCornerY - cos(PI/2-theta_cannon) * HBarrel;
-  
-  beginShape();
-  vertex(BLCornerX,BLCornerY);
-  vertex(ULCornerX,ULCornerY);
-  vertex(URCornerX,URCornerY);
-  vertex(BRCornerX,BRCornerY);
-  endShape();  */
   
   pushMatrix();
   translate(x_base, y_base-30);

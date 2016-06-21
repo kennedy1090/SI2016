@@ -51,7 +51,7 @@ int countMax = 20;
 
 void destroy() {
   destroyed = true;
-  box2d.destroyBody(body);
+  kill.add(body);
   for (int i=0; i<total; i++) {
     ++count;
     particles.add(new Particle(body.getPosition()));
@@ -129,4 +129,5 @@ class Particle extends GravObj {
       return false;
     }
   }
+}
 }

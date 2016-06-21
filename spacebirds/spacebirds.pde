@@ -7,8 +7,7 @@ import org.jbox2d.dynamics.contacts.*;
 import org.jbox2d.callbacks.*;
 import org.jbox2d.collision.*;
 
-// An ArrayList of objects that will fall on each other
-  Cannon c;
+Cannon c;
 ArrayList<GravObj> gravs;
 static ArrayList<Body> kill;
 float cooldown_time = 0.1;
@@ -32,7 +31,6 @@ void setup() {
   // We are setting a custom gravity
   box2d.setGravity(0, 0);
   keysDown = new boolean[7];
-  
   c = new Cannon(width/2, height);
   kill = new ArrayList<Body>();
   // Create the empty list
@@ -113,12 +111,13 @@ public void keyReleased(){
 }
 class Contacter implements ContactListener{
   ArrayList<Target> ts = new ArrayList<Target>();
-  Contacter(){
-    box2d.world.setContactListener(this);
+  Contacter(Box2DProcessing b){
+    b.world.setContactListener(this);
   }
   public void beginContact(Contact c){
     Object a = c.getFixtureA().getUserData();
     Object b = c.getFixtureB().getUserData();
+    println(a instanceof Player && b instanceof Target || a instanceof Target && b instanceof Player);
     if(a instanceof Player && b instanceof Target){
       ts.add((Target)b);
     }
@@ -129,4 +128,8 @@ class Contacter implements ContactListener{
   public void endContact(Contact c){}
   public void preSolve(Contact c, Manifold m){}
   public void postSolve(Contact c, ContactImpulse i){}
+  ArrayList<Target> getDestroyed(){
+    ArrayList<Target> t = (ArrayList<Target>)ts.clone();
+    ts.clear();
+    return t;
 }
