@@ -127,7 +127,6 @@ class Contacter implements ContactListener{
   public void beginContact(Contact c){
     Object a = c.getFixtureA().getUserData();
     Object b = c.getFixtureB().getUserData();
-    println(a instanceof Player && b instanceof Target || a instanceof Target && b instanceof Player);
     if(a instanceof Player && b instanceof Target){
       Target t = (Target)b;
       targetsRed++;

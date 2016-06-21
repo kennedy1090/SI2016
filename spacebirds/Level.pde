@@ -10,7 +10,6 @@ abstract class Level {
     gravs.add(g);
   }
   void display(){
-    println("gravs = "+gravs.size());
     while(kill.size()>0){
       GravObj b = kill.get(0);
       gravs.remove(b);
@@ -18,7 +17,6 @@ abstract class Level {
         box2d.destroyBody(b.body);
         kill.remove(0);
       }
-      println(kill.size());
     }
     boolean targets = false;
     for( int i = 0; i < gravs.size(); ++i ){

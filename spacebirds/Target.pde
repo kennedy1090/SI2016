@@ -32,7 +32,7 @@ class Target extends GravObj{
     translate(pos.x,pos.y);
     rotate(-a);
     colorMode(HSB);
-    fill((hits-1)*256/5, 1, 1);
+    fill((hits-1)*256/6, 255,255);
     colorMode(RGB);
     stroke(0);
     strokeWeight(1);
