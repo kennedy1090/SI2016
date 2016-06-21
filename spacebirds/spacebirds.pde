@@ -48,7 +48,7 @@ void setup() {
   c = new Cannon(width/2, height);
   scoreboard = new score();
   // Create the empty list
-  currentLevel = new LevelOne();
+  currentLevel = new LearningLevel1();
 }
 
 void draw() {

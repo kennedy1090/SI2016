@@ -1,6 +1,6 @@
 class LearningLevel1 extends Level {
   Level nextLevel(){
-    return null;
+    return LevelOne;
   }
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();
