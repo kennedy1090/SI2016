@@ -8,6 +8,7 @@ abstract class Level {
   }
   abstract int getRecommendedTime();
   abstract Level nextLevel();
+  abstract Level restart();
   abstract ArrayList<GravObj> addGravs();
   void add(GravObj g){
     gravs.add(g);
@@ -42,12 +43,12 @@ abstract class Level {
     }
   }
   void displayExtra(){}
-  void finish(){finish(true);}
-  void finish(boolean legit){
+  void finish(){finish(true, false);}
+  void finish(boolean legit, boolean restart){
     if(legit)scoreboard.addScore(int(getRecommendedTime()*1000-millis()+t)/10);
     kill.addAll(gravs);
     gravs.clear();
-    Level tlvl = nextLevel();
+    Level tlvl = restart();
     if(tlvl == null) noLoop();
     else currentLevel = tlvl;
   }
