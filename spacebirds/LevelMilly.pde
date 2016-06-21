@@ -23,5 +23,11 @@ class LevelMilly extends Level
   {
   fill(255,0,0);
   text("#CLE",199,210);
+  text("KYRIE",200,410);
+  fill(255,255,0);
+  text("23",550,310);
+  fill(0,0,255);
+  textSize(12);
+  text("CURRY",400,405);
   }
 }
