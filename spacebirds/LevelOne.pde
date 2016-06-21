@@ -1,4 +1,7 @@
 class LevelOne extends Level {
+  Level nextLevel(){
+    return new LevelTwo();
+  }
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();
     g.add(new Planet(100,100,30,new Vec2(6,0), 1,false));

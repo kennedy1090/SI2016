@@ -22,7 +22,7 @@ class Target extends GravObj{
     pushMatrix();
     translate(pos.x,pos.y);
     rotate(-a);
-    fill(175);
+    fill(200,0,0);
     stroke(0);
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);
@@ -43,10 +43,10 @@ int count = 0;
 int countMax = 20;
 
 void destroy() {
-  for (int i=0; i<total; i++) {
+  /*for (int i=0; i<total; i++) {
     ++count;
-    gravs.add(new Particle(box2d.coordWorldToPixels(body.getPosition())));
-  }
+    levels.get(currentLevel).add(new Particle(box2d.coordWorldToPixels(body.getPosition())));
+  }*/
   kill.add(this);
 
 }

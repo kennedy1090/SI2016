@@ -13,7 +13,7 @@ float cooldown_time = 0.4;
 float cooldown = 0;
 
 ArrayList<Level> levels;
-int currentLevel;
+int currentLevel = 0;
 
 static boolean[] keysDown;
 
@@ -39,9 +39,9 @@ void setup() {
   keysDown = new boolean[7];
   ter = new Contacter(box2d);
   c = new Cannon(width/2, height);
-  kill = new ArrayList<GravObj>();
   // Create the empty list
-  
+  levels = new ArrayList<Level>();
+  levels.add(new LevelOne());
 }
 
 void draw() {
@@ -54,6 +54,7 @@ void draw() {
     println("Msg = "+e.getMessage());
     println("Cause = "+e.getCause());
   }
+  levels.get(currentLevel).display();
   for(Target t : ter.getDestroyed()){
     t.destroy();
   }
@@ -87,9 +88,6 @@ public void keyPressed(){
     keysDown[5] = true;
   else if (key == 't' || key == 'T')
     keysDown[6] = true;
-  else if(key == ']') draw();
-  
-  key = '-';
 }
 
 public void keyReleased(){
@@ -123,11 +121,9 @@ class Contacter implements ContactListener{
     println(a instanceof Player && b instanceof Target || a instanceof Target && b instanceof Player);
     if(a instanceof Player && b instanceof Target){
       ts.add((Target)b);
-      noLoop();
     }
     else if(a instanceof Target && b instanceof Player){
       ts.add((Target)a);
-      noLoop();
     }
   }
   public void endContact(Contact c){}
