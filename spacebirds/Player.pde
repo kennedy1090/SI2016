@@ -4,7 +4,7 @@ class Player extends GravObj{
   float d = 0.1;
   float t;
   Player(float x, float y, Vec2 v){
-    makeBody(x,y,r,v,d);
+    makeBody(x,y,v,d);
     t = millis();
   }
 
@@ -26,35 +26,10 @@ class Player extends GravObj{
       spacebirds.kill.add(body);
     }
   }
-  // Here's our function that adds the particle to the Box2D world
-  void makeBody(float x, float y, float r, Vec2 v, float density) {
-    // Define a body
-    BodyDef bd = new BodyDef();
-    // Set its position
-    bd.position = box2d.coordPixelsToWorld(x,y);
-    bd.type = BodyType.DYNAMIC;
-    body = box2d.world.createBody(bd);
-
+  Shape getShape(){
     // Make the body's shape a circle
     CircleShape cs = new CircleShape();
     cs.m_radius = box2d.scalarPixelsToWorld(r);
-    
-    FixtureDef fd = new FixtureDef();
-    fd.shape = cs;
-    // Parameters that affect physics
-    fd.density = density;
-    fd.friction = coeff_friction;
-    fd.restitution = coeff_restitution;
-    
-    // Attach fixture to body
-    body.createFixture(fd);
-
-    // Give it a random initial velocity (and angular velocity)
-//    body.setLinearVelocity(new Vec2(random(-10f,10f),random(5f,10f)));
-   body.setLinearVelocity(v);
-    //body.setAngularVelocity(random(-10,10));
-        body.setAngularVelocity(0.0);
+    return cs;
   }
-
-
 }

@@ -156,8 +156,5 @@ void draw() {
   UranusAngle += 0.0007;
   NeptuneAngle += 0.0005;
   MoonAngle += 0.02;
-<<<<<<< HEAD
+
 }*/
-=======
-}
->>>>>>> origin/master

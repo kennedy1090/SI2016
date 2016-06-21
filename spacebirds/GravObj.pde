@@ -13,4 +13,31 @@ abstract class GravObj{
   void applyForce(Vec2 f){
     body.applyForceToCenter(f);
   }
+  void makeBody(float x, float y, Vec2 v, float density) {
+    // Define a body
+    BodyDef bd = new BodyDef();
+    // Set its position
+    bd.position = box2d.coordPixelsToWorld(x,y);
+    bd.type = BodyType.DYNAMIC;
+    body = box2d.world.createBody(bd);
+
+    
+    FixtureDef fd = new FixtureDef();
+    fd.shape = getShape();
+    // Parameters that affect physics
+    fd.density = density;
+    fd.friction = coeff_friction;
+    fd.restitution = coeff_restitution;
+    fd.setUserData(this);
+    
+    // Attach fixture to body
+    body.createFixture(fd);
+
+    // Give it a random initial velocity (and angular velocity)
+//    body.setLinearVelocity(new Vec2(random(-10f,10f),random(5f,10f)));
+   body.setLinearVelocity(v);
+    //body.setAngularVelocity(random(-10,10));
+        body.setAngularVelocity(0.0);
+  }
+  abstract Shape getShape();
 }

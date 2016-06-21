@@ -3,10 +3,12 @@ import shiffman.box2d.*;
 import org.jbox2d.collision.shapes.*;
 import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
-import org.jbox2d.dynamics.*;
+import org.jbox2d.dynamics.contacts.*;
+import org.jbox2d.callbacks.*;
+import org.jbox2d.collision.*;
 
 // An ArrayList of objects that will fall on each other
-Cannon c;
+  Cannon c;
 ArrayList<GravObj> gravs;
 static ArrayList<Body> kill;
 float cooldown_time = 0.1;
@@ -37,6 +39,7 @@ void setup() {
   gravs = new ArrayList<GravObj>();
   gravs.add(new Planet(100,100,30,new Vec2(6,0), 1,false));
   gravs.add(new Planet(100,300,60,new Vec2(0, 0), 10,false));
+  gravs.add(new Target(100,200,10,new Vec2(3,0),true));
 }
 
 void draw() {
@@ -107,4 +110,23 @@ public void keyReleased(){
   else if (key == 't' || key == 'T')
     keysDown[6] = false;
 
+}
+class Contacter implements ContactListener{
+  ArrayList<Target> ts = new ArrayList<Target>();
+  Contacter(){
+    box2d.world.setContactListener(this);
+  }
+  public void beginContact(Contact c){
+    Object a = c.getFixtureA().getUserData();
+    Object b = c.getFixtureB().getUserData();
+    if(a instanceof Player && b instanceof Target){
+      ts.add((Target)b);
+    }
+    else if(a instanceof Target && b instanceof Player){
+      ts.add((Target)a);
+    }
+  }
+  public void endContact(Contact c){}
+  public void preSolve(Contact c, Manifold m){}
+  public void postSolve(Contact c, ContactImpulse i){}
 }
