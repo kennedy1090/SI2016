@@ -10,4 +10,9 @@ class LevelTwo extends Level {
     g.add(new Target(width/2, height/6, 10,new Vec2(0,0), true,2));
     return g;
   }
+      void displayExtra(){
+    fill(0);
+    textSize(30);
+    text("Level 3", width/2,height/8);
+  }
 }

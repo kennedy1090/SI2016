@@ -16,5 +16,10 @@ class LevelWhy extends Level{
       }
     return g;
   }
+   void displayExtra(){
+    fill(0);
+    textSize(30);
+    text("Level 8", width/2,height/8);
+  }
   int getRecommendedTime(){return 20;}
 }

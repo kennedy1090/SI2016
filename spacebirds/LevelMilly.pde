@@ -22,7 +22,10 @@ class LevelMilly extends Level
   }
   void displayExtra()
   {
-  fill(255,0,0);
+    fill(0);
+    textSize(30);
+    text("Level 5", width/2,height/8);
+   fill(255,0,0);
   text("#CLE",199,210);
   text("KYRIE",200,410);
   fill(255,255,0);
