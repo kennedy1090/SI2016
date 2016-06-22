@@ -4,23 +4,23 @@ class Target extends GravObj{
   float r;
   int hits;
   PImage img;
-  Target(float x, float y, float r_, Vec2 v, boolean immobile, int hits, PImage _img){
-    this(x,y,r_,v,immobile,hits);
+  Target(float x, float y, float r_, Vec2 v, float d, boolean immobile, int hits, PImage _img){
+    this(x,y,r_,v,d,immobile,hits);
     img=_img;
   }
-  Target(float x, float y, float r_, Vec2 v, boolean immobile, int hits){
-    this(x,y,r_,v,immobile);
+  Target(float x, float y, float r_, Vec2 v, float d, boolean immobile, int hits){
     this.hits=hits;
+    r=r_;
+    makeBody(x,y,v,d);
+  }
+  Target(float x, float y, float r_, Vec2 v, boolean immobile, int hits){
+    this(x,y,r_,v,0.01,immobile,hits);
   }
   Target(float x, float y, float r_, Vec2 v,boolean immobile){
-    r = r_;
-    // This function puts the particle in the Box2d world
-    if(hits==0)hits=1;
-    this.immobile = immobile;
-    makeBody(x,y,v,0.1);
+    this(x,y,r_,v,immobile,1);
   }
   Target(float x, float y, float r_, boolean immobile) {
-    this(x,y,r_,new Vec2(0,0),immobile, 1);
+    this(x,y,r_,new Vec2(0,0),immobile);
   }
   int hit(){
     return --hits;
