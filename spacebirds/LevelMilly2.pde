@@ -15,7 +15,7 @@ class LevelMilly2 extends Level
     obj2.add(new Planet(500,400,60,new Vec2(0,0),100,true));
     obj2.add(new Target(100,300,30,new Vec2(0,0),0.001,true,4, loadImage("black-cat.jpg")));
     obj2.add(new Target(200,400,20,new Vec2(0,0),0.001,true,5,loadImage("black-cat.jpg")));
-    obj2.add(new Target(650,150,35,new Vec2(0,0),0.001,false,4,loadImage("black-cat.jpg")));
+    obj2.add(new Target(650,150,35,new Vec2(0,0),1.0,false,4,loadImage("black-cat.jpg")));
     return obj2;
   }
   void displayExtra(){
