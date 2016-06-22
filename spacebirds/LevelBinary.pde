@@ -10,4 +10,10 @@ class LevelBinary extends Level {
     g.add(new Target(width/2, height/2,10, true));
     return g;
   }
+      void displayExtra(){
+         textSize(30);
+    fill(255);
+    text("Level 7", width/2, height/8);
+      }
+
 }

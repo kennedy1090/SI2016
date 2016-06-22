@@ -13,6 +13,9 @@ class LevelEvan1 extends Level {
     return g;
   }
   void displayExtra(){
+       textSize(30);
+    fill(255);
+    text("Level 6", width/2, height/8);
   }
  int getRecommendedTime()
   {
