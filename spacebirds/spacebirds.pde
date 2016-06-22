@@ -119,9 +119,9 @@ public void mousePressed(){
     else if (clicked[6])
       currentLevel = new LevelBinary();
     else if (clicked[7])
-      currentLevel = new LevelOne();//LevelMilly2();
+      currentLevel = new LevelMilly2();
     else if (clicked[8])
-      currentLevel = new LevelOne();//LevelJayanth2();
+      currentLevel = new LevelJayanth2();
     else if (clicked[9])
       currentLevel = new LevelWhy();
     else {
