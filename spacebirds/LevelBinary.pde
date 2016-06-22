@@ -1,5 +1,5 @@
 class LevelBinary extends Level {
-  int getRecommendedTime(){return 10;}
+  int getRecommendedTime(){return 5;}
   Level restart(){return new LevelBinary();}
   Level nextLevel(){return new LevelWhy();}
   ArrayList<GravObj> addGravs(){
