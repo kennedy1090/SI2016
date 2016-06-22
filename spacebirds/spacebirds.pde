@@ -11,7 +11,7 @@ Cannon c;
 Contacter ter;
 float cooldown_time = 0.4;
 float cooldown = 0;
-
+PImage bg;
 float max_t = 15;
 
 //stuff for the scoreboard
@@ -49,6 +49,7 @@ void setup() {
   scoreboard = new score();
   // Create the empty list
   currentLevel = new System();
+  bg = loadImage("bg.jpg");
 }
 
 void draw() {

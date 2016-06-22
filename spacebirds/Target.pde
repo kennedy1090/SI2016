@@ -9,6 +9,7 @@ class Target extends GravObj{
     img=_img;
   }
   Target(float x, float y, float r_, Vec2 v, float d, boolean immobile, int hits){
+    this.immobile=immobile;
     this.hits=hits;
     r=r_;
     makeBody(x,y,v,d);
