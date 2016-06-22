@@ -23,6 +23,7 @@ class Target extends GravObj{
 
   // 
   void display() {
+    
     if(immobile){
       body.setLinearVelocity(new Vec2(0,0));
       body.setTransform(s, body.getAngle());
