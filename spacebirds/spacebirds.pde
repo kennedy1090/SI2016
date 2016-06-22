@@ -126,6 +126,7 @@ public void mousePressed(){
       currentLevel = new LevelWhy();
     else {
       println("miss");
+      println(mouseX + ", " + mouseY);
     }
   }
   
