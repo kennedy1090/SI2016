@@ -83,6 +83,14 @@ void draw() {
 static boolean[] getKeys(){
   return keysDown;
 }
+Vec2 rTheta(float r, float theta){return new Vec2(r*cos(theta), r*sin(theta));}
+public void mousePressed(){
+  if(currentLevel instanceof System){
+    System s = (System)currentLevel;
+    Vec2[] planets = {};
+    float[] radii = {s.SunDiam/2, s.MercuryDiam/2, s.VenusDiam/2, s.EarthDiam/2, s.MoonDiam/2, s.MarsDiam/2, s.JupiterDiam/2};
+  }
+}
 public void keyPressed(){
   if(key == CODED){
     if (keyCode == LEFT)

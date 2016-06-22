@@ -46,19 +46,24 @@ class System extends Level {
     MarsAngle = 0;
 
     JupiterDiam = 8.7*JupiterFactor;
-    JupiterOrbitRadius = 486/ORfactor; 
+    //JupiterOrbitRadius = 486/ORfactor; 
+    JupiterOrbitRadius = 220/ORfactor; 
+
     JupiterAngle = 0;
 
     SaturnDiam = 7.2*SaturnFactor;
-    SaturnOrbitRadius = 875/ORfactor; 
+    //SaturnOrbitRadius = 875/ORfactor; 
+    SaturnOrbitRadius = 350/ORfactor; 
     SaturnAngle = 0;
 
     UranusDiam = 3.1*UranusFactor;
-    UranusOrbitRadius = 950/ORfactor;
+    //UranusOrbitRadius = 950/ORfactor;
+    UranusOrbitRadius = 440/ORfactor;
     UranusAngle = 0;
 
     NeptuneDiam = 3.0*NeptuneFactor;
-    NeptuneOrbitRadius = 1000/ORfactor; 
+    //NeptuneOrbitRadius = 1000/ORfactor; 
+    NeptuneOrbitRadius = 500/ORfactor; 
     NeptuneAngle = 0;
   }
   float SunDiam;
