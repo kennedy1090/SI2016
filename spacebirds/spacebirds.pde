@@ -50,10 +50,11 @@ void setup() {
   // Create the empty list
   currentLevel = new System();
   bg = loadImage("bg.jpg");
+  bg.resize(width,height);
 }
 
 void draw() {
-  background(255);
+  background(bg);
   try{
     world.step(frameRate > 0 ? 1 / frameRate : 1 / 30,10,8);
   }
