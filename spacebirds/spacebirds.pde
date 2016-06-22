@@ -52,7 +52,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(0);
   try{
     world.step(frameRate > 0 ? 1 / frameRate : 1 / 30,10,8);
   }
@@ -76,6 +76,7 @@ void draw() {
     c.shot=false;
     cooldown-=1/(frameRate==0?1:frameRate);
   }
+  currentLevel.displayExtra();
 } // end draw()
 static boolean[] getKeys(){
   return keysDown;

@@ -36,7 +36,6 @@ abstract class Level {
     }
     fill(0);
     text(String.format("Time: %.3f",(millis()-t)/1000.0), width*7/8, height-20);
-    displayExtra();
 
     if(!targets){
       finish();

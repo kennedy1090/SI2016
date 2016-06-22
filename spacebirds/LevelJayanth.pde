@@ -18,4 +18,9 @@ class LevelJayanth extends Level {
     g.add(new Target(width/2, height/1.425, 10, new Vec2(3, 0), true,3));
     return g;
   }
+     void displayExtra(){
+    fill(255);
+    textSize(30);
+    text("Level 4", width/2,height/8);
+  }
 }
