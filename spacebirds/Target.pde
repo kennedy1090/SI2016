@@ -1,3 +1,4 @@
+//import processing.sound.*;
 class Target extends GravObj{
   
   // We need to keep track of a Body and a radius
@@ -24,6 +25,7 @@ class Target extends GravObj{
     this(x,y,r_,new Vec2(0,0),immobile);
   }
   int hit(){
+    //nse.play();
     return --hits;
   }
 

@@ -1,4 +1,4 @@
-
+import processing.sound.*;
 import shiffman.box2d.*;
 import org.jbox2d.collision.shapes.*;
 import org.jbox2d.common.*;
@@ -13,6 +13,8 @@ float cooldown_time = 0.4;
 float cooldown = 0;
 PImage bg;
 float max_t = 15;
+
+//Pulse nse;
 
 //stuff for the scoreboard
 int targetsRed;
@@ -37,6 +39,7 @@ World world;
 
 void setup() {
   size(800,600);
+  //nse = new Pulse(this);
   // Initialize box2d physics and create the world
   box2d = new Box2DProcessing(this);
   box2d.createWorld();

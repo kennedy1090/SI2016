@@ -1,7 +1,7 @@
 class LevelBinary extends Level {
   int getRecommendedTime(){return 5;}
   Level restart(){return new LevelBinary();}
-  Level nextLevel(){return new LevelJayanth2();}
+  Level nextLevel(){return new LevelMilly2();}
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();
     float v = 10;
