@@ -12,7 +12,11 @@ class LearningLevel1 extends Level {
   void displayExtra(){
     textSize(24);
     fill(0);
-    text("Use the arrow keys to move left and right", width/2 + 80,height-180, 300, 200);
+    textSize(20);
+    text("Use the arrow keys to move left and right.", width/2 + 70,height-220, 340, 240);
+     text("Press 't' and 'r' to rotate the cannon left and right, respectively.", width/2 + 75, height- 165, 265, 160);
+    text("Press the spacebar to shoot. ", width/2 + 95, height- 300, 330, 280);
+    text("Press 'e' to restart a level and press 'n' to skip a level. ", width/2 + 85, height- 275, 305, 255);
   }
   int getRecommendedTime()
   {
