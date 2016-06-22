@@ -1,7 +1,7 @@
 class LevelWhy extends Level{
   Level restart(){return new LevelWhy();}
   Level nextLevel(){
-    return null;
+    return new GameOver(scoreboard.score);
   }
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();

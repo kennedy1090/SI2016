@@ -3,6 +3,11 @@ class Target extends GravObj{
   // We need to keep track of a Body and a radius
   float r;
   int hits;
+  PImage img;
+  Target(float x, float y, float r_, Vec2 v, boolean immobile, int hits, PImage _img){
+    this(x,y,r_,v,immobile,hits);
+    img=_img;
+  }
   Target(float x, float y, float r_, Vec2 v, boolean immobile, int hits){
     this(x,y,r_,v,immobile);
     this.hits=hits;
@@ -41,6 +46,10 @@ class Target extends GravObj{
     stroke(0);
     strokeWeight(1);
     ellipse(0,0,r*2,r*2);
+    if(img!=null){
+      tint((hits-1)*256/6, 255,255);
+      image(img, -r/2, -r/2, r, r);
+    }
     popMatrix();
     stroke(0xff,0x00,0x00);
     if(!immobile) super.displayArrow();

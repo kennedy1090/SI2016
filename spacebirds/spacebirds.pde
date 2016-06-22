@@ -76,6 +76,7 @@ void draw() {
     c.shot=false;
     cooldown-=1/(frameRate==0?1:frameRate);
   }
+  currentLevel.displayExtra();
 } // end draw()
 static boolean[] getKeys(){
   return keysDown;
