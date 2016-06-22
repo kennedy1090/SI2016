@@ -14,9 +14,9 @@ class LevelJayanth extends Level {
     g.add(new Planet(width/2.25, height/2, 100, new Vec2(0,0), 3, true));
     g.add(new Planet(width/1.75, height/2, 100, new Vec2(0,0), 3, true));
     g.add(new Planet(width/2, height/3, 100, new Vec2(0,0), 100, true));
-    g.add(new Target(width/1.5,height*.25,10,new Vec2(0,0),true));
     g.add(new Target(width/1.5,height*.2,10,new Vec2(0,0),true));
-    g.add(new Target(width/1.75, height*.25, 10,new Vec2(0,0), true));
+    g.add(new Target(width/1.5,height*.25,10,new Vec2(0,0),true));
+    g.add(new Target(width/1.5, height*.3, 10,new Vec2(0,0), true));
     return g;
   }
 }
