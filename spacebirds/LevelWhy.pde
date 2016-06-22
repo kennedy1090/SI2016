@@ -10,7 +10,7 @@ class LevelWhy extends Level{
         if(i==j&&j==0.5)
           g.add(new Planet(width*i, height*j, 100, new Vec2(0,0), 100, false));
         else if(random(1)>0.5)
-          g.add(new Planet(width*i, height*j, 10, new Vec2(0,0), 100, false));
+          g.add(new Planet(width*i, height*j, 10, new Vec2(0,0), 1, false));
         else
           g.add(new Target(width*i, height*j, 10, new Vec2(0,0), false));
       }

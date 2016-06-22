@@ -12,7 +12,7 @@ class Target extends GravObj{
     // This function puts the particle in the Box2d world
     if(hits==0)hits=1;
     this.immobile = immobile;
-    makeBody(x,y,v,0.01);
+    makeBody(x,y,v,0.1);
   }
   Target(float x, float y, float r_, boolean immobile) {
     this(x,y,r_,new Vec2(0,0),immobile, 1);
