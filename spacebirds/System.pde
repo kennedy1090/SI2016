@@ -145,7 +145,7 @@ class System extends Level {
     text("SpaceBirds", 0, -125);   
     fill(255);                  
     textSize(22);
-    text("Click on the sun to begin, or another planet to select a specific level", -170, -120, 370, 100);
+    text("(Click on the sun to begin, or another planet to select a specific level)", -170, -120, 370, 100);
     pushMatrix();
     
 
