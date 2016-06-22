@@ -7,7 +7,7 @@ abstract class Level {
     t = millis();
     c.theta_cannon=0;
     c.x_base = width/2;
-    c.y_base = height;
+    c.y_base = height-20;
   }
   abstract int getRecommendedTime();
   abstract Level nextLevel();
