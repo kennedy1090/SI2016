@@ -87,12 +87,61 @@ static boolean[] getKeys(){
   return keysDown;
 }
 Vec2 rTheta(float r, float theta){return new Vec2(r*cos(theta), r*sin(theta));}
+float hypotenuse(float x, float y, float xMouse, float yMouse){return sqrt((x-xMouse+(width/2))*(x-xMouse+(width/2))+(y+(height/2)-yMouse)*(y+(height/2)-yMouse));}
 public void mousePressed(){
   if(currentLevel instanceof System){
     System s = (System)currentLevel;
-    Vec2[] planets = {};
-    float[] radii = {s.SunDiam/2, s.MercuryDiam/2, s.VenusDiam/2, s.EarthDiam/2, s.MoonDiam/2, s.MarsDiam/2, s.JupiterDiam/2};
+    float[] distance = {0, s.MercuryOrbitRadius, s.VenusOrbitRadius, s.EarthOrbitRadius, s.MoonOrbitRadius, s.MarsOrbitRadius, s.JupiterOrbitRadius, s.SaturnOrbitRadius, s.UranusOrbitRadius, s.NeptuneOrbitRadius};
+    float[] angle = {0, s.MercuryAngle, s.VenusAngle, s.EarthAngle, s.MoonAngle, s.MarsAngle, s.JupiterAngle, s.SaturnAngle, s.UranusAngle, s.NeptuneAngle};
+    float[] radii = {s.SunDiam/2, s.MercuryDiam/2, s.VenusDiam/2, s.EarthDiam/2, s.MoonDiam/2, s.MarsDiam/2, s.JupiterDiam/2, s.SaturnDiam/2, s.UranusDiam/2, s.NeptuneDiam/2};
+    boolean clicked[] = {false, false, false, false, false, false, false, false, false, false};
+    for (int i = 0; i <= 9; i++){
+      
+      if (hypotenuse(rTheta(distance[i], angle[i]).x, rTheta(distance[i], angle[i]).y, mouseX, mouseY) <= radii[i])
+        clicked[i] = true;
+      else
+        clicked[i] = false;
+    }
+    if (clicked[0]){
+      currentLevel = new LearningLevel1();
+      println("you good");
+    }
+    else if (clicked[1])
+      currentLevel = new LevelOne();
+    else if (clicked[2])
+      currentLevel = new LevelTwo();
+    else if (clicked[3])
+      currentLevel = new LevelJayanth();
+    else if (clicked[4])
+      currentLevel = new LevelMilly();
+    else if (clicked[5])
+      currentLevel = new LevelEvan1();
+    else if (clicked[6])
+      currentLevel = new LevelBinary();
+    else if (clicked[7])
+      currentLevel = new LevelOne();//LevelMilly2();
+    else if (clicked[8])
+      currentLevel = new LevelOne();//LevelJayanth2();
+    else if (clicked[9])
+      currentLevel = new LevelWhy();
+    else {
+      println("miss");
+    }
   }
+  
+  /* planets to levels
+  sun learning level 1
+  mercury level one
+  venus level two
+  earth level jayanth
+  moon level milly
+  mars level evan 1
+  jupiter level binary
+  saturn level why
+  uranus
+  neptune
+  */
+  
 }
 public void keyPressed(){
   if(key == CODED){

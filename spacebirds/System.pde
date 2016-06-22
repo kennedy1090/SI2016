@@ -197,7 +197,8 @@ class System extends Level {
     ellipse(0, 0, NeptuneDiam, NeptuneDiam);
 
     popMatrix();
-
+    pushMatrix();
+    
     rotate(EarthAngle);
 
     translate(EarthOrbitRadius, 0);
@@ -223,5 +224,7 @@ class System extends Level {
     UranusAngle += 0.0007;
     NeptuneAngle += 0.0005;
     MoonAngle += 0.02;
+    
+    popMatrix();
   }
 }
