@@ -13,7 +13,10 @@ class GameOver extends Level {
 
   }
   Level nextLevel(){return null;}
-  Level restart(){return new System();}
+  Level restart(){
+    scoreboard.addScore(-scoreboard.score);
+    return new System();
+  }
   int getRecommendedTime(){return 0;}
   void finish(){};
 }
