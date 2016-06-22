@@ -18,6 +18,11 @@ class LevelMilly2 extends Level
     obj2.add(new Target(650,150,35,new Vec2(0,0),0.001,false,4,loadImage("black-cat.jpg")));
     return obj2;
   }
+  void displayExtra(){
+         textSize(30);
+    fill(255);
+    text("Level 8", width/2, height/8);
+      }
   int getRecommendedTime()
   {
     return 20;
