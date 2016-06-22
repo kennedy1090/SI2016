@@ -48,7 +48,7 @@ abstract class Level {
     if(legit)scoreboard.addScore(int(getRecommendedTime()*1000-millis()+t)/10);
     kill.addAll(gravs);
     gravs.clear();
-    Level tlvl = restart();
+    Level tlvl = restart?restart():nextLevel();
     if(tlvl == null) noLoop();
     else currentLevel = tlvl;
   }
