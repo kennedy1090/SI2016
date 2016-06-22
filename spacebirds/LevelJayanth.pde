@@ -19,7 +19,7 @@ class LevelJayanth extends Level {
     return g;
   }
      void displayExtra(){
-    fill(0);
+    fill(255);
     textSize(30);
     text("Level 4", width/2,height/8);
   }

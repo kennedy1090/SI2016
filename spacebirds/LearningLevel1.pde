@@ -11,7 +11,7 @@ class LearningLevel1 extends Level {
   }
   void displayExtra(){
     textSize(24);
-    fill(0);
+    fill(255);
     textSize(20);
     text("Use the arrow keys to move left and right.", width/2 + 70,height-220, 340, 240);
      text("Press 't' and 'r' to rotate the cannon right and left, respectively.", width/2 + 75, height- 165, 265, 160);
