@@ -85,6 +85,10 @@ void draw() {
     cooldown-=1/(frameRate==0?1:frameRate);
   }
   currentLevel.displayExtra();
+  fill(0xff0000);
+  text("Velocity", width-50, 20);
+  fill(0xcc00cc);
+  text("Force", width-50, 60);
 } // end draw()
 static boolean[] getKeys(){
   return keysDown;
