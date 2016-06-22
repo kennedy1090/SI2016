@@ -196,13 +196,13 @@ public void keyReleased(){
       keysDown[2] = false;
     else if (keyCode == DOWN)
       keysDown[4] = false;
+  }
     else if (key == ' ')
       keysDown[0] = false;
     else if (key == 'r' || key == 'R')
       keysDown[5] = false;
     else if (key == 't' || key == 'T')
       keysDown[6] = false;
-  }
 }
 
 class Contacter implements ContactListener{
