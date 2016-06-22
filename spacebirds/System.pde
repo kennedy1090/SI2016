@@ -146,6 +146,8 @@ class System extends Level {
         fill(255);                  
         textSize(25);
     text("(Press UP arrow to play)", 0, -100);
+    textSize(20);
+        text("(Click on a planet to select a level)",0,-80);
     pushMatrix();
     
 
