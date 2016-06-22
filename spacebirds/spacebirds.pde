@@ -52,7 +52,7 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  background(255);
   try{
     world.step(frameRate > 0 ? 1 / frameRate : 1 / 30,10,8);
   }
