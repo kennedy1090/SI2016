@@ -27,4 +27,8 @@ class LevelMilly2 extends Level
   {
     return 20;
   }
+  void dispalyExtra()
+  {
+    fill(0,0,199);
+    text("CRUSH THE CATS",width/2,height/5);
 }
