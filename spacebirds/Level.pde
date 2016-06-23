@@ -1,4 +1,5 @@
 static ArrayList<GravObj> kill = new ArrayList<GravObj>();
+
 abstract class Level {
   ArrayList<GravObj> gravs;
   int t;
