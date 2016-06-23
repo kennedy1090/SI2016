@@ -8,6 +8,10 @@ import org.jbox2d.dynamics.contacts.*;
 import org.jbox2d.callbacks.*;
 import org.jbox2d.collision.*;
 
+//working on sound
+//import processing.sound.*;
+//SoundFile file;
+
 Cannon c;
 Contacter ter;
 float cooldown_time = 0.4;
@@ -57,6 +61,9 @@ void setup() {
   currentLevel = new System();
   bg = loadImage("bg.jpg");
   bg.resize(width,height);
+  
+  //file = new SoundFile(this, "pew.mp3");
+  //file.play();
 }
 
 void draw() {
