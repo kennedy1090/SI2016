@@ -1,5 +1,7 @@
 //import processing.sound.*;
 import java.sql.*;
+import java.net.*;
+import java.io.*;
 import shiffman.box2d.*;
 import org.jbox2d.collision.shapes.*;
 import org.jbox2d.common.*;
@@ -26,6 +28,7 @@ int targetsRed;
 int targetsBlue;
 int shots;
 score scoreboard;
+int speedrun;
 
 String text = "";
 
@@ -91,11 +94,12 @@ void draw() {
     c.shot=false;
     cooldown-=1/(frameRate==0?1:frameRate);
   }
-  currentLevel.displayExtra();
   fill(0xff0000);
   text("Velocity", width-50, 20);
   fill(0xcc00cc);
   text("Force", width-50, 60);
+    currentLevel.displayExtra();
+
 } // end draw()
 static boolean[] getKeys(){
   return keysDown;
@@ -271,6 +275,7 @@ public static class SQLScores {
 
       //STEP 4: Execute a query
       stmt = conn.createStatement();
+      stmt.setQueryTimeout(1);
       String sql;
       sql = command;
       ArrayList<String> names = new ArrayList<String>();
