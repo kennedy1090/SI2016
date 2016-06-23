@@ -111,7 +111,6 @@ public void mousePressed(){
     }
     if (clicked[0]){
       currentLevel = new LearningLevel1();
-      println("you good");
     }
     else if (clicked[1])
       currentLevel = new LevelOne();
@@ -131,10 +130,6 @@ public void mousePressed(){
       currentLevel = new LevelJayanth2();
     else if (clicked[9])
       currentLevel = new LevelWhy();
-    else {
-      println("miss");
-      println(mouseX + ", " + mouseY);
-    }
   }
   
   /* planets to levels
@@ -257,9 +252,8 @@ public static class SQLScores {
      return runSQL("SELECT * FROM score ORDER BY score DESC;", true);
    }
    static ArrayList[] runSQL(String command, boolean retur){
-     println(command);
      java.sql.Connection conn = null;
-   java.sql.Statement stmt = null;
+     java.sql.Statement stmt = null;
    
    try{
       //STEP 2: Register JDBC driver
