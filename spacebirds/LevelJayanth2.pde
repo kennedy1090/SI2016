@@ -1,6 +1,6 @@
 class LevelJayanth2 extends Level {
   int getRecommendedTime(){return 5;}
-  Level restart(){return new LevelBinary();}
+  Level restart(){return new LevelJayanth2();}
   Level nextLevel(){return new LevelWhy();}
   ArrayList<GravObj> addGravs(){
     ArrayList<GravObj> g = new ArrayList<GravObj>();
